@@ -23,7 +23,7 @@ $(function() {
       type: 'POST',
       data: dataToSend,
       success: (data) => {
-        console.log(data);
+        window.location = '/profile';
       }
     });
 

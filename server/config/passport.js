@@ -1,15 +1,20 @@
 const User = require('../models').User;
-const LocalStrategy = require('passport-local').Strategy;
 
 module.exports = (passport) => {
+
+const LocalStrategy = require('passport-local').Strategy;
 
   passport.serializeUser((user, done) => {
     done(null, user.id);
   });
 
   passport.deserializeUser((id, done) => {
-    User.findById(id).then((err, user) => {
-      done(err, user);
+    User.findById(id).then((user) => {
+      if (user) {
+        done(null, user.get());
+      } else {
+        done(user.errors, null);
+      }
     });
   });
 
@@ -19,10 +24,8 @@ module.exports = (passport) => {
     passReqToCallback: true
   },
   function(req, email, password, done) {
-    User.findOne({ where: {'email': email} }).then((err, user) => {
-      if (err) {
-        return done(err);
-      }
+    User.findOne({ where: {'email': email} }).then((user) => {
+
       if (user) {
         return done(null, false, req.flash('signupMessage', 'That email is already taken'));
       } else {
@@ -33,11 +36,14 @@ module.exports = (passport) => {
           email: email,
           password: password
         })
-        .then(user => {
-          console.log(user);
-          done(null, user)
-        })
-        .catch(error => done(error));
+        .then((newUser) => {
+          if(!newUser) {
+            return done(null, false);
+          }
+          if(newUser) {
+            return done(null, newUser);
+          }
+        });
       }
     });
   }))
