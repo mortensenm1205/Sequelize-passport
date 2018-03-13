@@ -26,6 +26,10 @@ module.exports = (sequelize, DataTypes) => {
     password: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    fav_color: {
+      type: DataTypes.STRING,
+      allowNull: false
     }
   }, {
     classMethods: {
