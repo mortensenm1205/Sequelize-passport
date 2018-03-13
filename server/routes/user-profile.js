@@ -6,7 +6,7 @@ module.exports = (app, passport) => {
 
   app.get('/logout', (req, res) => {
     req.logout();
-    res.redirect('/signUp');
+    res.redirect('/');
   })
 
   //Found this gave me the best results, when testing to see if the user
@@ -16,7 +16,7 @@ module.exports = (app, passport) => {
     if(req.isAuthenticated()) {
       return next();
     } else {
-      res.redirect('/signUp')
+      res.redirect('/')
     }
   }
 }

@@ -26,4 +26,8 @@ require('./server/routes/user-login.js')(app, passport);
 require('./server/routes/user-profile.js')(app, passport);
 require('./server/config/passport')(passport);
 
+app.get('/', (req, res) => {
+  res.render('homepage');
+});
+
 app.listen(PORT, () => console.log(`Running on ${PORT}`));
