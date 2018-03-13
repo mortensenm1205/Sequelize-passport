@@ -27,6 +27,8 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
+    //easier to add in my models, since i don't have to migrate
+    //didn't add any constraints for simpie testing
     fav_color: {
       type: DataTypes.STRING
     }

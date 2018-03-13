@@ -25,6 +25,9 @@ $(function() {
       type: 'POST',
       data: dataToSend,
       success: (data) => {
+        //as mentioned in my user-routes, autehnticate doesn't
+        //actually redirect a route, i still have to do so here in my
+        //post request to my server
         window.location = '/profile';
       }
     });
