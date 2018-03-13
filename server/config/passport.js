@@ -70,7 +70,7 @@ const LocalStrategy = require('passport-local').Strategy;
       passReqToCallback: true
     },
     function(req, email, password, done) {
-      User.findOne({ where: {'email'}}).then((user) => {
+      User.findOne({ where: {'email': email}}).then((user) => {
         if(!user) {
           return done(null, false, req.flash('loginMessage', 'Email does not exist'));
         }
