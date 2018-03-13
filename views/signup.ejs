@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript" src="scripts/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="scripts/cookies.js"></script>
+  </head>
+  <body>
+    <h1>Sign-Up</h1>
+    <% if (message.length > 0) { %>
+    <div><%= message %></div>
+    <% } %>
+    <form id="createuser">
+      <label for="first_name">First Name</label>
+      <input type="text" name="first_name" id="first_name">
+      <label for="last_name">Last Name</label>
+      <input type="text" name="last_name" id="last_name">
+      <label for="user_name">Username</label>
+      <input type="text" name="user_name" id="user_name">
+      <label for="email">Email</label>
+      <input type="email" name="email" id="email">
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password">
+      <label for="fav_color">Favorite Color</label>
+      <input type="text" name="fav_color" id="fav_color">
+      <input type="submit" name="submit" id="submit">
+    </form>
+    <!-- This is going to be our homepage file -->
+
+    <!-- <script type="text/javascript">
+
+      var submit = $("#submit");
+
+      submit.on('click', (e) => {
+        e.preventDefault();
+
+        Cookies.expire('__cfduid');
+      })
+    </script> -->
+    <script type="text/javascript" src="scripts/signup.js"></script>
+  </body>
+</html>
