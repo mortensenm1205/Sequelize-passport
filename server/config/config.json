@@ -1,8 +1,8 @@
 {
   "development": {
-    "username": "mattmortensen",
-    "password": "blackshoes01",
-    "database": "template1",
+    "username": "postgres",
+    "password": null,
+    "database": "workdb",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
