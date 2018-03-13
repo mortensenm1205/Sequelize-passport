@@ -21,7 +21,8 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'statics')));
 
-require('./server/routes/user.js')(app, passport);
+require('./server/routes/user-signup.js')(app, passport);
+require('./server/routes/user-profile.js')(app, passport);
 require('./server/config/passport')(passport);
 
 app.listen(PORT, () => console.log(`Running on ${PORT}`));
