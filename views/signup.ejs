@@ -7,6 +7,9 @@
     <script type="text/javascript" src="scripts/cookies.js"></script>
   </head>
   <body>
+    <% if (message.length > 0) { %>
+    <div><%= message %></div>
+    <% } %>
     <form id="createuser">
       <label for="first_name">First Name</label>
       <input type="text" name="first_name" id="first_name">

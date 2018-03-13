@@ -28,8 +28,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     fav_color: {
-      type: DataTypes.STRING,
-      allowNull: false
+      type: DataTypes.STRING
     }
   }, {
     classMethods: {

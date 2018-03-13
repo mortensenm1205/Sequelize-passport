@@ -1,7 +1,7 @@
 
 module.exports = (app, passport) => {
   app.get('/signUp', (req, res, next) => {
-    res.render('signup');
+    res.render('signup', {message: req.flash('signupMessage')});
     next();
   });
 
@@ -12,7 +12,7 @@ module.exports = (app, passport) => {
   }));
 
   app.get('/profile', isLoggedIn, (req, res) => {
-    res.render('profile');
+    res.render('profile', {user: req.user});
   });
 
 
