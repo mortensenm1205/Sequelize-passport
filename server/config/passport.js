@@ -27,6 +27,8 @@ const LocalStrategy = require('passport-local').Strategy;
       }
     });
   });
+
+
   //I got a lot of these code snippets from coding tutiorals but i had to
   //rewrite the db statements to match Sequelize's (most were written in MongoDB)
   //promise based queries.
