@@ -6,6 +6,7 @@ User since it's the only thing we have to test for authentication on.
 
 const User = require('../models').User;
 
+
 module.exports = (passport) => {
 //Had it before where this line was outside of the module.exports. But this seems
 //to work better
