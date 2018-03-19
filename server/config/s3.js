@@ -9,7 +9,7 @@ AWS.config.logger = console.log;
 const s3 = new AWS.S3();
 
 module.exports = {
-  createBucket(req, res) {
+  createBucket(req) {
     var item = req.user;
     var params = { Bucket: item.bucketName };
     s3.createBucket(params, function (err, data) {
@@ -18,5 +18,21 @@ module.exports = {
       }
       console.log({ data });
     });
+  },
+  uploadFile(req, res, next) {
+    var item = req.user;
+    var upload = multer({
+        storage: multerS3({
+            s3: s3,
+            bucket: item.bucketName,
+            metadata: function (req, file, cb) {
+                cb(null, { fieldName: file.fieldname });
+            },
+            key: function (req, file, cb) {
+                cb(null, file.fieldname)
+            }
+        })
+    })
+    next();
   }
 }

@@ -53,7 +53,7 @@ const LocalStrategy = require('passport-local').Strategy;
           user_name: req.body.user_name,
           email: email,
           password: password,
-          fav_color: req.body.fav_color
+          bucketName: req.body.bucketName
         })
         .then((newUser) => {
           if(!newUser) {

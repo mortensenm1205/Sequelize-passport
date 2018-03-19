@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     //easier to add in my models, since i don't have to migrate
     //didn't add any constraints for simpie testing
-    fav_color: {
+    bucketName: {
       type: DataTypes.STRING
     }
   }, {

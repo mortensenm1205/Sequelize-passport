@@ -1,7 +1,6 @@
 const path = require('path');
-const s3 = require(path.join(__dirname, '../config/s3.js'));
 
-module.exports = (app, passport) => {
+module.exports = (app, passport, s3) => {
   app.get('/signUp', (req, res, next) => {
     res.render('signup', {message: req.flash('signupMessage')});
     next();
@@ -10,10 +9,9 @@ module.exports = (app, passport) => {
   //thats why you don't see another cb function. You can set this up in a
   //couple different ways. Including a way to have control stil over req, and res
   app.post('/signUp', passport.authenticate('local-signup'),  (req, res) => {
-      const bucketName = `${req.user.last_name.toLowerCase()}s-${Date.now()}`;
-      req.user.bucketName = bucketName;
       if(req.user) {
-        s3.createBucket(req, res)
+        console.log("HERE IS BUCKETNAME: " + Object.keys(req.user.dataValues));
+        s3.createBucket(req)
         res.redirect('/profile');
       } else {
         res.redirect('/signUp');

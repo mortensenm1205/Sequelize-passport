@@ -5,11 +5,12 @@ $(function() {
   var user_name = $("#user_name");
   var email = $("#email");
   var password = $("#password");
-  var fav_color = $("#fav_color");
   var submit = $("#submit");
 
   submit.on("click", (e) => {
     e.preventDefault();
+
+    var bucketName = last_name.val().toLowerCase() + 's-img-bucket-' + Date.now();
 
     var dataToSend = {
       "first_name": first_name.val(),
@@ -17,7 +18,7 @@ $(function() {
       "user_name": user_name.val(),
       "email": email.val(),
       "password": password.val(),
-      "fav_color": fav_color.val()
+      "bucketName": bucketName
     }
 
     $.ajax({

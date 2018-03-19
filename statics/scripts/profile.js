@@ -10,7 +10,7 @@ $(function() {
 
   uploadImg.on('click', (e) => {
     e.preventDefault();
-    window.location = '/upload_img'
+    window.location = '/upload_img';
   })
 
 });
