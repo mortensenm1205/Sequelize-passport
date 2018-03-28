@@ -1,6 +1,6 @@
 const path = require('path');
 
-module.exports = (app, passport, s3) => {
+module.exports = (app, passport) => {
   app.get('/signUp', (req, res, next) => {
     res.render('signup', {message: req.flash('signupMessage')});
     next();
@@ -10,8 +10,6 @@ module.exports = (app, passport, s3) => {
   //couple different ways. Including a way to have control stil over req, and res
   app.post('/signUp', passport.authenticate('local-signup'),  (req, res) => {
       if(req.user) {
-        console.log("HERE IS BUCKETNAME: " + Object.keys(req.user.dataValues));
-        s3.createBucket(req)
         res.redirect('/profile');
       } else {
         res.redirect('/signUp');

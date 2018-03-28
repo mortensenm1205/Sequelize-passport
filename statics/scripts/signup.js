@@ -10,15 +10,12 @@ $(function() {
   submit.on("click", (e) => {
     e.preventDefault();
 
-    var bucketName = last_name.val().toLowerCase() + 's-img-bucket-' + Date.now();
-
     var dataToSend = {
       "first_name": first_name.val(),
       "last_name": last_name.val(),
       "user_name": user_name.val(),
       "email": email.val(),
-      "password": password.val(),
-      "bucketName": bucketName
+      "password": password.val()
     }
 
     $.ajax({

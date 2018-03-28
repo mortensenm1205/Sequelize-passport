@@ -24,7 +24,7 @@ module.exports = {
     var upload = multer({
         storage: multerS3({
             s3: s3,
-            bucket: item.bucketName,
+            bucket: 'full-stack-photo-app-jbm18',
             metadata: function (req, file, cb) {
                 cb(null, { fieldName: file.fieldname });
             },

@@ -26,11 +26,6 @@ module.exports = (sequelize, DataTypes) => {
     password: {
       type: DataTypes.STRING,
       allowNull: false
-    },
-    //easier to add in my models, since i don't have to migrate
-    //didn't add any constraints for simpie testing
-    bucketName: {
-      type: DataTypes.STRING
     }
   }, {
     classMethods: {

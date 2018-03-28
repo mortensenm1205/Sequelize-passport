@@ -6,7 +6,6 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const morgan = require('morgan');
 const path = require('path');
-const s3 = require(path.join(__dirname, '/server/config/s3.js'));
 const PORT = process.env.PORT || 9000;
 
 const app = express();
@@ -33,11 +32,11 @@ function isLoggedIn(req, res, next) {
   }
 }
 
-require('./server/routes/user-signup.js')(app, passport, s3);
+require('./server/routes/user-signup.js')(app, passport);
 require('./server/routes/user-login.js')(app, passport);
 require('./server/routes/user-profile.js')(app, passport, isLoggedIn);
 require('./server/config/passport.js')(passport);
-require('./server/routes/upload-image.js')(app, passport, isLoggedIn, s3);
+require('./server/routes/upload-image.js')(app, passport, isLoggedIn);
 
 app.get('/', (req, res) => {
   res.render('homepage');
