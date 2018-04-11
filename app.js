@@ -36,7 +36,6 @@ require('./server/routes/user-signup.js')(app, passport);
 require('./server/routes/user-login.js')(app, passport);
 require('./server/routes/user-profile.js')(app, passport, isLoggedIn);
 require('./server/config/passport.js')(passport);
-require('./server/routes/upload-image.js')(app, passport, isLoggedIn);
 
 app.get('/', (req, res) => {
   res.render('homepage');

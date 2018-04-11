@@ -1,16 +1,26 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <script type="text/javascript" src="scripts/jquery-3.3.1.js"></script>
-  </head>
-  <body>
-    <h1>Hello <%= user.first_name %></h1>
-    <input type="button" name="logout" value="Logout" id="logout">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <script type="text/javascript" src="scripts/jquery-3.3.1.js"></script>
+</head>
+<body>
+  <h1>Hello <%= user.first_name %></h1>
+  <input type="button" name="logout" value="Logout" id="logout">
 
-    <input type="button" name="upload-image" value="Upload Image" id="upload_image">
+  <form enctype="multipart/form-data" method="post" action="/profile">
+    <label for="img-upload">Choose an Image to upload: </label>
+    <input type="file" name="img-upload" id="img-upload">
+    <input type="submit" name="img-upload" value="Submit">
+  </form>
 
-    <script type="text/javascript" src="scripts/profile.js"></script>
-  </body>
+  <div>
+    <% for(var i = 0; i < imgSrc.length; i++) { %>
+      <img src="https://s3.us-east-2.amazonaws.com/full-stack-photo-app-jbm18/<%= imgSrc[i].Key %>" />
+    <% } %>
+  </div>
+
+  <script type="text/javascript" src="scripts/profile.js"></script>
+</body>
 </html>
